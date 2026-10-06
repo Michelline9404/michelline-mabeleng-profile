@@ -1,360 +1,661 @@
+/* ============================================================
+   MICHELLINE MABELENG — CV STYLESHEET
+   Sophisticated, UNICEF-inspired design system
+   ============================================================ */
+
+/* ---------- Design Tokens (Light) ---------- */
 :root {
-    --primary-color: #1a1a1a;
-    --secondary-color: #333333;
-    --text-color: #222222;
-    --accent-color: #0066cc;
-    --light-bg: #ffffff;
-    --border-color: #cccccc;
+    /* Brand palette */
+    --primary-color: #374EA2;      /* Deep UNICEF navy */
+    --secondary-color: #1CABE2;    /* UNICEF cyan */
+    --text-color: #1F2A44;         /* Body text */
+    --muted-color: #5A6B88;        /* Secondary text */
+    --accent-color: #1CABE2;       /* Links & highlights */
+    --accent-hover: #1598C9;
+    --success-color: #80BD41;      /* UNICEF green */
+    --light-bg: #F4F7FB;           /* Page background */
+    --surface: #FFFFFF;            /* Card surface */
+    --border-color: #E2E8F0;
+    --chip-bg: rgba(28, 171, 226, 0.08);
+    --chip-border: rgba(28, 171, 226, 0.18);
+
+    /* Radii & shadows */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-pill: 999px;
+    --shadow-sm: 0 1px 3px rgba(31, 42, 68, 0.06);
+    --shadow-md: 0 4px 16px rgba(28, 171, 226, 0.10);
+    --shadow-lg: 0 12px 40px rgba(28, 171, 226, 0.12);
+
+    /* Motion */
+    --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
 }
 
+/* ---------- Dark Theme ---------- */
 body.dark-theme {
-    --primary-color: #1a1a1a;
-    --secondary-color: #2d2d2d;
-    --text-color: #e0e0e0;
-    --accent-color: #66b3ff;
-    --light-bg: #1e1e1e;
-    --border-color: #444444;
+    --primary-color: #7DD3FC;
+    --secondary-color: #38BDF8;
+    --text-color: #E2E8F0;
+    --muted-color: #94A3B8;
+    --accent-color: #38BDF8;
+    --accent-hover: #7DD3FC;
+    --success-color: #80BD41;
+    --light-bg: #0F172A;
+    --surface: #1E293B;
+    --border-color: #334155;
+    --chip-bg: rgba(56, 189, 248, 0.10);
+    --chip-border: rgba(56, 189, 248, 0.22);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.45);
+    --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.55);
 }
 
-* {
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Arial', 'Helvetica', sans-serif;
-    line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--light-bg);
-    transition: background-color 0.3s ease, color 0.3s ease;
+/* ---------- Base ---------- */
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-color);
+    background-color: var(--light-bg);
+    padding: 40px 20px 80px;
+    transition: background-color 0.35s var(--ease), color 0.35s var(--ease);
+}
+
+/* ---------- Container (the CV "card") ---------- */
 .container {
     max-width: 900px;
     margin: 0 auto;
-    padding: 40px 20px;
-    background-color: var(--light-bg);
+    padding: 48px 52px 40px;
+    background-color: var(--surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    transition: background-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
 
-/* Header Styles */
+/* ============================================================
+   HEADER
+   ============================================================ */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 20px;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 24px;
 }
 
 .header-content h1 {
-    font-size: 2.5em;
-    font-weight: bold;
-    margin-bottom: 10px;
+    font-size: 2.1rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 12px;
     color: var(--primary-color);
 }
 
 .titles {
     display: flex;
-    flex-direction: column;
-    gap: 5px;
-    font-size: 0.9em;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.78rem;
     color: var(--secondary-color);
-    font-weight: 500;
-    letter-spacing: 0.5px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
 .title {
-    display: block;
+    display: inline-block;
+    padding: 4px 12px;
+    background-color: var(--chip-bg);
+    border: 1px solid var(--chip-border);
+    border-radius: var(--radius-pill);
+    white-space: nowrap;
+    transition: background-color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.title:hover {
+    background-color: rgba(28, 171, 226, 0.14);
+    transform: translateY(-1px);
 }
 
 .contact-info {
     text-align: right;
-    font-size: 0.95em;
+    font-size: 0.88rem;
+    color: var(--muted-color);
+    line-height: 1.9;
+    flex-shrink: 0;
 }
 
 .contact-info p {
-    margin: 5px 0;
-    color: var(--text-color);
+    margin: 2px 0;
+    color: var(--muted-color);
 }
 
 .contact-info a {
     color: var(--accent-color);
     text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s var(--ease);
 }
 
 .contact-info a:hover {
+    color: var(--accent-hover);
     text-decoration: underline;
+    text-underline-offset: 3px;
 }
 
-/* Divider */
+/* ---------- Divider ---------- */
 .divider {
     border: none;
-    border-top: 2px solid var(--primary-color);
-    margin: 20px 0;
+    height: 3px;
+    background: linear-gradient(90deg,
+        var(--secondary-color) 0%,
+        var(--success-color) 50%,
+        var(--primary-color) 100%);
+    border-radius: var(--radius-pill);
+    margin: 8px 0 36px;
+    opacity: 0.9;
 }
 
-/* Section Styles */
+/* ============================================================
+   SECTIONS
+   ============================================================ */
 .section {
-    margin-bottom: 30px;
+    margin-bottom: 2.6rem;
+    animation: fadeUp 0.6s var(--ease) both;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 .section-title {
-    font-size: 1.3em;
-    font-weight: bold;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     color: var(--primary-color);
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.6rem;
+    display: inline-block;
+    position: relative;
+    border-bottom: none;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--secondary-color);
+    border-radius: 2px;
+    opacity: 0.85;
+}
+
+.section-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 32px;
+    height: 2px;
+    background: var(--success-color);
+    border-radius: 2px;
+    z-index: 1;
 }
 
 .section p {
-    color: var(--text-color);
+    color: var(--muted-color);
     margin-bottom: 15px;
-    text-align: justify;
-    line-height: 1.8;
+    font-size: 0.95rem;
+    text-align: left;
+    line-height: 1.75;
 }
 
-/* Experience Styles */
+/* ============================================================
+   EXPERIENCE
+   ============================================================ */
 .experience-item {
-    margin-bottom: 20px;
+    position: relative;
+    margin-bottom: 22px;
+    padding: 4px 0 4px 20px;
+    border-left: 3px solid var(--secondary-color);
+    transition: border-color 0.3s var(--ease);
+}
+
+.experience-item:hover {
+    border-left-color: var(--success-color);
 }
 
 .experience-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
     margin-bottom: 10px;
     flex-wrap: wrap;
     gap: 10px;
 }
 
 .experience-header h3 {
-    font-size: 1.1em;
-    font-weight: bold;
-    color: var(--primary-color);
-}
-
-.date {
-    font-size: 0.9em;
-    color: var(--secondary-color);
-    font-style: italic;
-}
-
-.experience-item ul {
-    margin-left: 20px;
+    font-size: 1.08rem;
+    font-weight: 700;
     color: var(--text-color);
 }
 
-.experience-item li {
-    margin-bottom: 8px;
-    list-style-type: disc;
+.date {
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--secondary-color);
+    background-color: var(--chip-bg);
+    padding: 3px 12px;
+    border-radius: var(--radius-pill);
+    white-space: nowrap;
+    font-style: normal;
 }
 
-/* Skills Grid */
+.experience-item ul {
+    margin-left: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.experience-item li {
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 6px;
+    color: var(--muted-color);
+    font-size: 0.92rem;
+    list-style: none;
+}
+
+.experience-item li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+}
+
+/* ============================================================
+   TECHNICAL SKILLS
+   ============================================================ */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
     margin-bottom: 15px;
 }
 
 .skill-item {
-    background-color: var(--secondary-color);
-    color: var(--light-bg);
-    padding: 12px 15px;
-    border-radius: 5px;
-    font-size: 0.95em;
-    line-height: 1.4;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: var(--chip-bg);
+    color: var(--text-color);
+    border: 1px solid var(--chip-border);
+    padding: 14px 18px;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    font-weight: 500;
+    transition: transform 0.25s var(--ease),
+                border-color 0.25s var(--ease),
+                background-color 0.25s var(--ease),
+                box-shadow 0.25s var(--ease);
 }
 
 .skill-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateX(4px);
+    border-color: var(--secondary-color);
+    background-color: rgba(28, 171, 226, 0.12);
+    box-shadow: var(--shadow-md);
 }
 
-body.dark-theme .skill-item {
-    background-color: #444444;
-    color: var(--text-color);
+.skill-item.is-active {
+    background-color: rgba(28, 171, 226, 0.18);
+    border-color: var(--secondary-color);
+    transform: translateX(4px) scale(1.02);
+    box-shadow: 0 4px 14px rgba(28, 171, 226, 0.22);
 }
 
-/* Project Styles */
+/* ============================================================
+   PROJECTS
+   ============================================================ */
 .project-item {
-    margin-bottom: 18px;
-    padding-left: 15px;
-    border-left: 4px solid var(--accent-color);
+    position: relative;
+    margin-bottom: 16px;
+    padding: 16px 20px;
+    background-color: rgba(28, 171, 226, 0.04);
+    border-left: 3px solid var(--success-color);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    transition: transform 0.25s var(--ease),
+                background-color 0.25s var(--ease);
+}
+
+.project-item:hover {
+    transform: translateX(4px);
+    background-color: rgba(28, 171, 226, 0.08);
 }
 
 .project-item h3 {
-    font-size: 1em;
-    font-weight: bold;
+    font-size: 0.98rem;
+    font-weight: 700;
     color: var(--primary-color);
-    margin-bottom: 8px;
+    margin-bottom: 6px;
+    letter-spacing: 0.02em;
 }
 
 .project-item p {
-    color: var(--text-color);
+    color: var(--muted-color);
     margin: 0;
-    font-size: 0.95em;
+    font-size: 0.9rem;
 }
 
-/* Strengths Grid */
+/* ============================================================
+   CORE STRENGTHS
+   ============================================================ */
 .strengths-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
 }
 
 .strength-column ul {
-    list-style-type: disc;
-    margin-left: 20px;
-    color: var(--text-color);
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
 }
 
 .strength-column li {
+    position: relative;
+    padding-left: 22px;
     margin-bottom: 10px;
+    color: var(--muted-color);
+    font-size: 0.92rem;
 }
 
-/* Education Styles */
+.strength-column li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(28, 171, 226, 0.14);
+}
+
+/* ============================================================
+   EDUCATION
+   ============================================================ */
 .education-item {
-    margin-bottom: 20px;
-    background-color: var(--light-bg);
-    padding-bottom: 10px;
+    position: relative;
+    margin-bottom: 22px;
+    padding: 4px 0 4px 20px;
+    background-color: transparent;
+    border-left: 3px solid var(--secondary-color);
+    transition: border-color 0.3s var(--ease);
+}
+
+.education-item:hover {
+    border-left-color: var(--success-color);
 }
 
 .education-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
     margin-bottom: 8px;
     flex-wrap: wrap;
     gap: 10px;
 }
 
 .education-header h3 {
-    font-size: 1em;
-    font-weight: bold;
-    color: var(--primary-color);
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--text-color);
 }
 
 .education-item p {
-    color: var(--text-color);
+    color: var(--muted-color);
     font-weight: 500;
-    margin-bottom: 10px;
+    font-size: 0.92rem;
+    margin-bottom: 8px;
 }
 
 .education-item ul {
-    margin-left: 20px;
-    color: var(--text-color);
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
 }
 
 .education-item li {
-    margin-bottom: 8px;
-    list-style-type: disc;
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 6px;
+    color: var(--muted-color);
+    font-size: 0.9rem;
 }
 
-/* Additional Information */
+.education-item li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+}
+
+/* ============================================================
+   ADDITIONAL INFORMATION
+   ============================================================ */
 .additional-info {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.info-item {
+    padding: 16px 20px;
+    background-color: rgba(28, 171, 226, 0.04);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    transition: border-color 0.25s var(--ease),
+                background-color 0.25s var(--ease);
+}
+
+.info-item:hover {
+    border-color: var(--secondary-color);
+    background-color: rgba(28, 171, 226, 0.07);
 }
 
 .info-item h4 {
-    font-size: 1em;
-    font-weight: bold;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: var(--primary-color);
     margin-bottom: 8px;
 }
 
 .info-item p {
-    color: var(--text-color);
-    font-size: 0.95em;
+    color: var(--muted-color);
+    font-size: 0.9rem;
     line-height: 1.6;
+    margin: 0;
 }
 
-/* Footer with Buttons */
+/* ============================================================
+   FOOTER & BUTTONS
+   ============================================================ */
 .footer {
     display: flex;
-    gap: 15px;
+    gap: 12px;
     justify-content: center;
     margin-top: 40px;
     flex-wrap: wrap;
-    padding-top: 20px;
-    border-top: 2px solid var(--border-color);
+    padding-top: 28px;
+    border-top: 1px solid var(--border-color);
 }
 
 .btn {
-    padding: 12px 24px;
-    font-size: 1em;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 26px;
+    font-family: inherit;
+    font-size: 0.88rem;
     font-weight: 600;
+    letter-spacing: 0.02em;
+    border: none;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: transform 0.25s var(--ease),
+                box-shadow 0.25s var(--ease),
+                background-color 0.25s var(--ease),
+                color 0.25s var(--ease);
+    white-space: nowrap;
+}
+
+.btn:focus-visible {
+    outline: 3px solid rgba(28, 171, 226, 0.35);
+    outline-offset: 2px;
 }
 
 .btn-print {
-    background-color: var(--primary-color);
-    color: var(--light-bg);
+    background: linear-gradient(120deg, var(--primary-color), #2a3d8f);
+    color: #ffffff;
 }
 
 .btn-print:hover {
-    background-color: var(--secondary-color);
-    transform: scale(1.05);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(55, 78, 162, 0.32);
 }
 
 .btn-download {
-    background-color: var(--accent-color);
-    color: white;
+    background: linear-gradient(120deg, var(--secondary-color), #38BDF8);
+    color: #ffffff;
 }
 
 .btn-download:hover {
-    background-color: #0052a3;
-    transform: scale(1.05);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(28, 171, 226, 0.35);
 }
 
 .btn-toggle-theme {
-    background-color: #666666;
-    color: white;
+    background: transparent;
+    color: var(--muted-color);
+    border: 1.5px solid var(--border-color);
 }
 
 .btn-toggle-theme:hover {
-    background-color: #555555;
-    transform: scale(1.05);
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
-/* Print Styles */
+/* ============================================================
+   PRINT STYLES
+   ============================================================ */
 @media print {
     body {
-        background-color: white;
+        background: #ffffff;
+        color: #000000;
+        padding: 0;
+        font-size: 12px;
     }
 
     .container {
         padding: 0;
-        background-color: white;
+        max-width: 100%;
+        background: #ffffff;
+        box-shadow: none;
+        border-radius: 0;
     }
 
     .footer {
         display: none;
     }
 
-    .skill-item {
+    .section {
+        animation: none;
         break-inside: avoid;
     }
 
+    .section-title::before,
+    .section-title::after {
+        display: none;
+    }
+
+    .section-title {
+        color: #000000;
+        border-bottom: 2px solid #000000;
+    }
+
+    .divider {
+        background: #000000;
+        height: 2px;
+    }
+
+    .skill-item,
     .experience-item,
     .project-item,
-    .education-item {
-        page-break-inside: avoid;
+    .education-item,
+    .info-item {
+        break-inside: avoid;
+        box-shadow: none;
+        background: transparent;
+        border: 1px solid #cccccc;
+    }
+
+    .date {
+        background: transparent;
+        color: #000000;
     }
 }
 
-/* Responsive Design */
+/* ============================================================
+   RESPONSIVE — TABLET
+   ============================================================ */
 @media (max-width: 768px) {
+    body {
+        padding: 20px 12px 60px;
+    }
+
+    .container {
+        padding: 32px 24px 28px;
+        border-radius: var(--radius-md);
+    }
+
     .header {
         flex-direction: column;
+        gap: 18px;
     }
 
     .contact-info {
@@ -362,7 +663,7 @@ body.dark-theme .skill-item {
     }
 
     .header-content h1 {
-        font-size: 2em;
+        font-size: 1.75rem;
     }
 
     .skills-grid {
@@ -372,12 +673,14 @@ body.dark-theme .skill-item {
     .strengths-grid,
     .additional-info {
         grid-template-columns: 1fr;
+        gap: 16px;
     }
 
     .experience-header,
     .education-header {
         flex-direction: column;
         align-items: flex-start;
+        gap: 6px;
     }
 
     .footer {
@@ -390,20 +693,55 @@ body.dark-theme .skill-item {
     }
 }
 
-@media (max-width: 600px) {
+/* ============================================================
+   RESPONSIVE — MOBILE
+   ============================================================ */
+@media (max-width: 480px) {
     .container {
-        padding: 20px 10px;
+        padding: 24px 18px 20px;
     }
 
     .header-content h1 {
-        font-size: 1.5em;
+        font-size: 1.45rem;
+    }
+
+    .titles {
+        gap: 6px;
+    }
+
+    .title {
+        font-size: 0.7rem;
+        padding: 3px 10px;
     }
 
     .section-title {
-        font-size: 1.1em;
+        font-size: 0.95rem;
+    }
+
+    .section {
+        margin-bottom: 2rem;
     }
 
     .contact-info {
-        font-size: 0.85em;
+        font-size: 0.85rem;
+    }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+    .section {
+        animation: none;
+        opacity: 1;
+        transform: none;
     }
 }
