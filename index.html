@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Michelline Mabeleng — ICT Professional, Electronics Technician and aspiring Network & Cybersecurity specialist based in Johannesburg, South Africa.">
+    <meta name="description" content="Michelline Mabeleng — ICT professional, electronics technician and aspiring IT support, network and cybersecurity specialist based in Johannesburg, South Africa.">
     <meta name="author" content="Michelline Mabeleng">
-    <meta name="theme-color" content="#1CABE2">
+    <meta name="theme-color" content="#0a0f1c">
 
-    <title>Michelline Mabeleng — Curriculum Vitae</title>
+    <title>Michelline Mabeleng · ICT Professional Portfolio</title>
 
-    <!-- Open Graph / social sharing -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Michelline Mabeleng — CV">
+    <meta property="og:title" content="Michelline Mabeleng · ICT Portfolio">
     <meta property="og:description" content="ICT Professional · Electronics Technician · Aspiring Network & Cybersecurity Specialist">
 
-    <!-- Favicon (MM monogram) -->
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231CABE2'/%3E%3Ctext x='16' y='22' font-size='14' font-family='Arial' font-weight='bold' text-anchor='middle' fill='%23ffffff'%3EMM%3C/text%3E%3C/svg%3E">
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2338bdf8'/%3E%3Ctext x='16' y='22' font-size='14' font-family='Arial' font-weight='bold' text-anchor='middle' fill='%230a0f1c'%3EMM%3C/text%3E%3C/svg%3E">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,158 +24,478 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- html2pdf.js — enables true PDF download (optional) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
 </head>
 
 <body>
-    <div class="container">
+
+    <!-- ============================================================
+         HEADER / NAVIGATION
+         ============================================================ -->
+    <header class="site-header" id="siteHeader">
+        <div class="nav-wrap container">
+
+            <!-- Brand -->
+            <a href="#home" class="brand" aria-label="Michelline Mabeleng — home">
+                <span class="brand-mark">MM</span>
+                <span class="brand-text">
+                    Michelline Mabeleng
+                    <small>ICT Professional</small>
+                </span>
+            </a>
+
+            <!-- Desktop + mobile nav list -->
+            <nav class="nav" id="primaryNav" aria-label="Main navigation">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link is-active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#education" class="nav-link">Education</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+
+                <a href="#contact" class="btn btn-primary btn-sm nav-cta">
+                    Hire Me
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                </a>
+            </nav>
+
+            <!-- Hamburger -->
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="primaryNav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+    </header>
+
+    <!-- Backdrop that appears behind mobile menu -->
+    <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+
+    <main>
 
         <!-- ============================================================
-             HEADER
+             HERO
              ============================================================ -->
-        <header class="header">
-            <div class="header-content">
-                <h1>MICHELLINE MABELENG</h1>
-                <div class="titles">
-                    <span class="title">Electronics Technician</span>
-                    <span class="title">Office Administrator</span>
-                    <span class="title">Data Capturer</span>
-                    <span class="title">I.T Technician / Network Engineer</span>
+        <section id="home" class="hero">
+            <div class="hero-bg" aria-hidden="true">
+                <span class="blob blob-1"></span>
+                <span class="blob blob-2"></span>
+                <span class="grid-lines"></span>
+            </div>
+
+            <div class="container hero-inner">
+
+                <div class="hero-copy">
+                    <span class="status-pill">
+                        <span class="dot"></span>
+                        Open to internships &amp; entry-level IT roles
+                    </span>
+
+                    <h1>
+                        Hi, I'm <span class="grad">Michelline Mabeleng</span>
+                    </h1>
+
+                    <p class="hero-role">
+                        <span id="typewriter"></span><span class="caret" aria-hidden="true"></span>
+                    </p>
+
+                    <p class="hero-lead">
+                        An ICT professional based in Auckland Park, Johannesburg with hands-on
+                        experience in electronics technical support, data capturing and office
+                        administration. Certified by the Cisco Networking Academy in IT Essentials,
+                        Cybersecurity, IoT and CCNA: Introduction to Networks.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary">
+                            View Projects
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </a>
+                        <a href="#contact" class="btn btn-ghost">
+                            Contact Me
+                        </a>
+                    </div>
+
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <strong>5</strong>
+                            <span>Cisco &amp; NQF certifications</span>
+                        </div>
+                        <div class="stat">
+                            <strong>3+</strong>
+                            <span>Years hands-on technical work</span>
+                        </div>
+                        <div class="stat">
+                            <strong>4</strong>
+                            <span>Academic &amp; personal projects</span>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="hero-visual" aria-hidden="true">
+                    <div class="avatar-ring"></div>
+                    <div class="avatar">
+                        <span>MM</span>
+                    </div>
+                    <div class="float-card float-1">
+                        <span class="fc-icon">🛡️</span>
+                        <div>
+                            <strong>Cybersecurity</strong>
+                            <small>Cisco Certified</small>
+                        </div>
+                    </div>
+                    <div class="float-card float-2">
+                        <span class="fc-icon">🌐</span>
+                        <div>
+                            <strong>CCNA</strong>
+                            <small>Introduction to Networks</small>
+                        </div>
+                    </div>
+                    <div class="float-card float-3">
+                        <span class="fc-icon">🛠️</span>
+                        <div>
+                            <strong>IT Essentials</strong>
+                            <small>Hardware &amp; Support</small>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-
-            <div class="contact-info">
-                <p>📍 Johannesburg, Auckland Park, 2092</p>
-                <p>📧 <a href="mailto:michelline@mabeleng@gmail.com">michelline@mabeleng@gmail.com</a></p>
-                <p>📱 <a href="tel:+27730040001">073 004 0001</a></p>
-            </div>
-        </header>
-
-        <hr class="divider">
-
-        <!-- ============================================================
-             SUMMARY
-             ============================================================ -->
-        <section class="section">
-            <h2 class="section-title">Summary</h2>
-            <p>
-                Motivated and dedicated Information and Communication Technology (ICT) professional
-                with an ICT Certificate from Central Johannesburg College and Cisco Networking Academy
-                certifications in IT Essentials and Introduction to Cybersecurity. Experienced in
-                electronic technician support, data capturing, and office administration. Strong
-                technical troubleshooting, computer literacy, and organizational skills with a
-                commitment to delivering excellent customer service. Seeking an entry-level IT
-                Support, Help Desk, Desktop Support, or Junior Cybersecurity role where I can
-                contribute and continue developing my technical expertise.
-            </p>
         </section>
 
         <!-- ============================================================
-             PROFESSIONAL EXPERIENCE
+             ABOUT
              ============================================================ -->
-        <section class="section">
-            <h2 class="section-title">Professional Experience</h2>
+        <section id="about" class="section">
+            <div class="container">
 
-            <div class="experience-item">
-                <div class="experience-header">
-                    <h3>Electronics Technician</h3>
-                    <span class="date">July 2023 – May 2026</span>
-                </div>
-                <ul>
-                    <li>Installed, tested and maintained electronic equipment</li>
-                    <li>Diagnosed and resolved technical faults</li>
-                    <li>Assisted with equipment repairs and maintenance</li>
-                    <li>Ensured equipment operated safely and efficiently</li>
-                    <li>Supported clients with technical issues and troubleshooting</li>
-                </ul>
-            </div>
+                <header class="section-head reveal">
+                    <span class="eyebrow">About Me</span>
+                    <h2>Driven by curiosity, built on fundamentals</h2>
+                    <p>A quick introduction to who I am, what I do and what I'm working towards.</p>
+                </header>
 
-            <div class="experience-item">
-                <div class="experience-header">
-                    <h3>Office Administration Assistant</h3>
-                    <span class="date">February 2017 – October 2019</span>
+                <div class="about-grid">
+
+                    <div class="about-copy reveal">
+                        <p>
+                            I'm an <strong>Information and Communication Technology (ICT) professional</strong>
+                            with an ICT Certificate from Central Johannesburg College and a set of
+                            Cisco Networking Academy certifications covering IT Essentials,
+                            Introduction to Cybersecurity, Introduction to IoT and CCNA: Introduction
+                            to Networks.
+                        </p>
+                        <p>
+                            My experience spans <strong>electronic technician support</strong>, where
+                            I installed, tested, maintained and repaired electronic equipment and
+                            diagnosed technical faults; <strong>data capturing and record management</strong>;
+                            and <strong>office administration</strong>, where I managed daily operations,
+                            scheduled appointments and supported clients professionally.
+                        </p>
+                        <p>
+                            What drives me is the problem-solving side of technology — finding the
+                            fault, understanding the system and delivering a solution that actually
+                            works for the user. I'm now focused on growing into an
+                            <strong>IT Support, Help Desk, Desktop Support or Junior Cybersecurity</strong>
+                            role where I can keep learning while adding real value to a team.
+                        </p>
+                    </div>
+
+                    <aside class="facts reveal">
+                        <h3>Quick Facts</h3>
+
+                        <div class="fact-row">
+                            <span class="fact-ico" aria-hidden="true">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <small>Location</small>
+                                <p>Auckland Park, Johannesburg, 2092</p>
+                            </div>
+                        </div>
+
+                        <div class="fact-row">
+                            <span class="fact-ico" aria-hidden="true">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                    <path d="m22 7-10 6L2 7"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <small>Email</small>
+                                <p><a href="mailto:michelline@mabeleng@gmail.com">michelline@mabeleng@gmail.com</a></p>
+                            </div>
+                        </div>
+
+                        <div class="fact-row">
+                            <span class="fact-ico" aria-hidden="true">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <small>Phone</small>
+                                <p><a href="tel:+27730040001">073 004 0001</a></p>
+                            </div>
+                        </div>
+
+                        <div class="fact-row">
+                            <span class="fact-ico" aria-hidden="true">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <line x1="2" y1="12" x2="22" y2="12"/>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <small>Languages</small>
+                                <p>English · isiZulu · Setswana</p>
+                            </div>
+                        </div>
+
+                        <div class="fact-row">
+                            <span class="fact-ico" aria-hidden="true">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 10 12 5 2 10l10 5 10-5z"/>
+                                    <path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <small>Education</small>
+                                <p>NC(V) IT &amp; Computer Science L4</p>
+                            </div>
+                        </div>
+                    </aside>
+
                 </div>
-                <ul>
-                    <li>Managed office administration and daily operations</li>
-                    <li>Scheduled appointments and maintained office records</li>
-                    <li>Assisted clients and responded to enquiries professionally</li>
-                    <li>Prepared documents, reports and correspondence</li>
-                    <li>Supported the team with general administrative duties</li>
-                </ul>
             </div>
         </section>
 
         <!-- ============================================================
-             TECHNICAL SKILLS
+             SKILLS
              ============================================================ -->
-        <section class="section">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-item">Computer hardware installation, maintenance and troubleshooting</div>
-                <div class="skill-item">Windows operating systems</div>
-                <div class="skill-item">Basic networking concepts</div>
-                <div class="skill-item">Cybersecurity fundamentals</div>
-                <div class="skill-item">Microsoft Office (Word, Excel, Outlook and PowerPoint)</div>
-                <div class="skill-item">Data capturing and record management</div>
-                <div class="skill-item">Technical support and problem-solving</div>
-                <div class="skill-item">Customer service</div>
+        <section id="skills" class="section section-alt">
+            <div class="container">
+
+                <header class="section-head reveal">
+                    <span class="eyebrow">Skills</span>
+                    <h2>Technical &amp; soft skills</h2>
+                    <p>The tools, technologies and personal strengths I bring to a team.</p>
+                </header>
+
+                <div class="skills-grid">
+                    <article class="skill-card reveal">
+                        <h3>
+                            <span class="sc-ico">💻</span>
+                            Hardware &amp; IT Support
+                        </h3>
+                        <div class="tags">
+                            <span class="tag">Computer hardware installation</span>
+                            <span class="tag">Preventative maintenance</span>
+                            <span class="tag">Fault diagnosis &amp; repair</span>
+                            <span class="tag">Windows operating systems</span>
+                            <span class="tag">End-user support</span>
+                            <span class="tag">Technical troubleshooting</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-card reveal">
+                        <h3>
+                            <span class="sc-ico">🌐</span>
+                            Networking
+                        </h3>
+                        <div class="tags">
+                            <span class="tag">Basic networking concepts</span>
+                            <span class="tag">LAN setup &amp; topologies</span>
+                            <span class="tag">Cat6 Ethernet cabling</span>
+                            <span class="tag">RJ45 termination &amp; crimping</span>
+                            <span class="tag">CCNA: Intro to Networks</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-card reveal">
+                        <h3>
+                            <span class="sc-ico">🛡️</span>
+                            Cybersecurity &amp; IoT
+                        </h3>
+                        <div class="tags">
+                            <span class="tag">Cybersecurity fundamentals</span>
+                            <span class="tag">Threat awareness</span>
+                            <span class="tag">IoT basics</span>
+                            <span class="tag">Network security principles</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-card reveal">
+                        <h3>
+                            <span class="sc-ico">📊</span>
+                            Software &amp; Data
+                        </h3>
+                        <div class="tags">
+                            <span class="tag">Microsoft Word</span>
+                            <span class="tag">Microsoft Excel</span>
+                            <span class="tag">Microsoft Outlook</span>
+                            <span class="tag">PowerPoint</span>
+                            <span class="tag">Data capturing</span>
+                            <span class="tag">Record management</span>
+                            <span class="tag">HTML &amp; CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">SQL</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-card reveal">
+                        <h3>
+                            <span class="sc-ico">⚡</span>
+                            Electronics
+                        </h3>
+                        <div class="tags">
+                            <span class="tag">Component identification</span>
+                            <span class="tag">Circuit analysis</span>
+                            <span class="tag">Soldering &amp; desoldering</span>
+                            <span class="tag">Electrical safety</span>
+                            <span class="tag">Equipment testing</span>
+                        </div>
+                    </article>
+                </div>
+
+                <h3 class="sub-head reveal">Soft Skills</h3>
+
+                <div class="soft-grid">
+                    <div class="soft-item reveal"><span class="bullet"></span> Communication</div>
+                    <div class="soft-item reveal"><span class="bullet"></span> Problem-solving</div>
+                    <div class="soft-item reveal"><span class="bullet"></span> Customer service</div>
+                    <div class="soft-item reveal"><span class="bullet"></span> Continuous learner</div>
+                    <div class="soft-item reveal"><span class="bullet"></span> Attention to detail</div>
+                    <div class="soft-item reveal"><span class="bullet"></span> Time management</div>
+                    <div class="soft-item reveal"><span class="bullet"></span> Teamwork</div>
+                    <div class="soft-item reveal"><span class="bullet"></span> Adaptability</div>
+                </div>
+
             </div>
         </section>
 
         <!-- ============================================================
              PROJECTS
              ============================================================ -->
-        <section class="section">
-            <h2 class="section-title">Projects</h2>
+        <section id="projects" class="section">
+            <div class="container">
 
-            <div class="project-item">
-                <h3>Computer Programming ISAT</h3>
-                <p>
-                    Developed a web-based application to sell goods &amp; services.
-                    Utilized HTML, CSS and JavaScript.
-                </p>
-            </div>
+                <header class="section-head reveal">
+                    <span class="eyebrow">Portfolio</span>
+                    <h2>Selected projects</h2>
+                    <p>Academic and personal projects that showcase my hands-on technical ability.</p>
+                </header>
 
-            <div class="project-item">
-                <h3>Principles of Computer Programming ISAT</h3>
-                <p>
-                    Designed &amp; implemented a database system to keep logs of a company's
-                    transactions. Utilized SQL &amp; database design principles.
-                </p>
-            </div>
+                <div class="projects-grid">
 
-            <div class="project-item">
-                <h3>Data Communication &amp; Networking ISAT</h3>
-                <p>
-                    Created a small LAN network. Utilized tools such as crimper, RJ45 connectors
-                    and Cat6 cables to construct Ethernet cables.
-                </p>
-            </div>
-        </section>
+                    <article class="project-card reveal">
+                        <div class="pc-top">
+                            <span class="pc-ico">🌐</span>
+                            <span class="pc-badge">Web Development</span>
+                        </div>
+                        <div class="pc-body">
+                            <h3>Web-Based Application to Sell Goods &amp; Services</h3>
+                            <p>
+                                A multi-page, browser-based storefront built from scratch as part of
+                                my Computer Programming ISAT — users can browse goods and services
+                                and place an order through a simple, user-friendly interface.
+                            </p>
+                            <ul>
+                                <li>Responsive, accessible pages built with semantic HTML5</li>
+                                <li>Custom CSS styling for a clean, consistent look</li>
+                                <li>JavaScript for interactivity and form validation</li>
+                                <li>Full development cycle: planning → design → build → test</li>
+                            </ul>
+                            <div class="pc-tech">
+                                <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>UI Design</span>
+                            </div>
+                        </div>
+                    </article>
 
-        <!-- ============================================================
-             CORE SKILLS & STRENGTHS
-             ============================================================ -->
-        <section class="section">
-            <h2 class="section-title">Core Skills &amp; Strengths</h2>
-            <div class="strengths-grid">
-                <div class="strength-column">
-                    <ul>
-                        <li>Technical troubleshooting</li>
-                        <li>Communication</li>
-                        <li>Continuous learner</li>
-                        <li>Electrical component identification</li>
-                    </ul>
-                </div>
-                <div class="strength-column">
-                    <ul>
-                        <li>Problem-solving</li>
-                        <li>Circuit analysis</li>
-                        <li>Electrical safety</li>
-                        <li>Soldering and desoldering skills</li>
-                    </ul>
+                    <article class="project-card reveal">
+                        <div class="pc-top">
+                            <span class="pc-ico">🗄️</span>
+                            <span class="pc-badge">Database</span>
+                        </div>
+                        <div class="pc-body">
+                            <h3>Company Transactions Database System</h3>
+                            <p>
+                                A relational database designed and implemented for my Principles of
+                                Computer Programming ISAT, built to keep a reliable, queryable log of
+                                a company's daily transactions.
+                            </p>
+                            <ul>
+                                <li>Modelled data with an ERD and normalisation</li>
+                                <li>Tables, primary/foreign keys and integrity constraints</li>
+                                <li>SQL queries, joins and aggregate reports</li>
+                                <li>Tested against realistic business scenarios</li>
+                            </ul>
+                            <div class="pc-tech">
+                                <span>SQL</span><span>Database Design</span><span>ERD</span><span>Normalisation</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal">
+                        <div class="pc-top">
+                            <span class="pc-ico">🔌</span>
+                            <span class="pc-badge">Networking</span>
+                        </div>
+                        <div class="pc-body">
+                            <h3>Small LAN Network Build</h3>
+                            <p>
+                                A hands-on Data Communication &amp; Networking ISAT where I designed
+                                and physically built a small local area network, including all cable
+                                termination and connectivity testing.
+                            </p>
+                            <ul>
+                                <li>Planned topology and IP addressing scheme</li>
+                                <li>Cut, stripped and terminated Cat6 cable with RJ45 connectors</li>
+                                <li>Tested every run for continuity and correct pin-out</li>
+                                <li>Verified devices communicating across the LAN</li>
+                            </ul>
+                            <div class="pc-tech">
+                                <span>LAN</span><span>Cat6</span><span>RJ45</span><span>TCP/IP</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal">
+                        <div class="pc-top">
+                            <span class="pc-ico">✨</span>
+                            <span class="pc-badge">Personal</span>
+                        </div>
+                        <div class="pc-body">
+                            <h3>Personal Portfolio Website</h3>
+                            <p>
+                                This website — designed, built and deployed from scratch to present
+                                my skills, certifications and projects in a single, shareable link.
+                            </p>
+                            <ul>
+                                <li>Fully responsive layout for desktop, tablet and mobile</li>
+                                <li>Smooth scrolling, scroll reveals and a mobile drawer menu</li>
+                                <li>Focus on accessibility, performance and clean code</li>
+                                <li>Deployed live using GitHub Pages</li>
+                            </ul>
+                            <div class="pc-tech">
+                                <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>GitHub Pages</span>
+                            </div>
+                        </div>
+                    </article>
+
                 </div>
             </div>
         </section>
@@ -183,67 +503,273 @@
         <!-- ============================================================
              EDUCATION
              ============================================================ -->
-        <section class="section">
-            <h2 class="section-title">Education</h2>
+        <section id="education" class="section section-alt">
+            <div class="container">
 
-            <div class="education-item">
-                <div class="education-header">
-                    <h3>Central Johannesburg College</h3>
-                    <span class="date">January 2020 – December 2022</span>
-                </div>
-                <p><strong>Information Technology &amp; Computer Sciences</strong></p>
-                <ul>
-                    <li>Relevant coursework in ICT field</li>
-                    <li>System Analysis &amp; Design for project management</li>
-                    <li>Data Communication &amp; Networking</li>
-                </ul>
-            </div>
+                <header class="section-head reveal">
+                    <span class="eyebrow">Education</span>
+                    <h2>Academic background</h2>
+                    <p>Where I built my foundation in information technology and computer science.</p>
+                </header>
 
-            <div class="education-item">
-                <div class="education-header">
-                    <h3>Cisco Network Academy</h3>
-                    <span class="date">January 2022 – December 2022</span>
+                <div class="timeline">
+
+                    <article class="tl-item reveal">
+                        <span class="tl-date">Jan 2020 — Dec 2022</span>
+                        <h3>Information Technology &amp; Computer Sciences</h3>
+                        <p class="tl-org">Central Johannesburg College</p>
+                        <ul>
+                            <li>NC(V) Information Technology &amp; Computer Science Level 4</li>
+                            <li>Systems Analysis &amp; Design — SDLC and project management</li>
+                            <li>Data Communication &amp; Networking — LAN design and cabling</li>
+                            <li>Programming, databases and web development fundamentals</li>
+                        </ul>
+                    </article>
+
+                    <article class="tl-item reveal">
+                        <span class="tl-date">Jan 2022 — Dec 2022</span>
+                        <h3>Cisco Networking Academy Programme</h3>
+                        <p class="tl-org">Cisco Networking Academy</p>
+                        <ul>
+                            <li>CCNA: Introduction to Networks — routing, switching, IP addressing</li>
+                            <li>IT Essentials — computer hardware, OS and troubleshooting</li>
+                            <li>Introduction to Cybersecurity — threats and security principles</li>
+                            <li>Introduction to IoT — connected devices and network-enabled systems</li>
+                        </ul>
+                    </article>
+
                 </div>
-                <ul>
-                    <li>Cisco Certified Network Academy (CCNA)</li>
-                    <li>IT Essentials, Internet of Things (IoT)</li>
-                    <li>Cyber Security</li>
-                </ul>
             </div>
         </section>
 
         <!-- ============================================================
-             ADDITIONAL INFORMATION
+             CERTIFICATIONS
              ============================================================ -->
-        <section class="section">
-            <h2 class="section-title">Additional Information</h2>
-            <div class="additional-info">
-                <div class="info-item">
-                    <h4>Languages</h4>
-                    <p>English, isiZulu, Setswana</p>
+        <section id="certifications" class="section">
+            <div class="container">
+
+                <header class="section-head reveal">
+                    <span class="eyebrow">Credentials</span>
+                    <h2>Certifications</h2>
+                    <p>Industry-recognised certifications from Cisco and Central Johannesburg College.</p>
+                </header>
+
+                <div class="cert-grid">
+
+                    <article class="cert-card reveal">
+                        <span class="cert-ico">🏅</span>
+                        <div>
+                            <h3>IT Essentials</h3>
+                            <p>Cisco Networking Academy</p>
+                        </div>
+                    </article>
+
+                    <article class="cert-card reveal">
+                        <span class="cert-ico">🛡️</span>
+                        <div>
+                            <h3>Introduction to Cybersecurity</h3>
+                            <p>Cisco Networking Academy</p>
+                        </div>
+                    </article>
+
+                    <article class="cert-card reveal">
+                        <span class="cert-ico">📡</span>
+                        <div>
+                            <h3>Introduction to IoT</h3>
+                            <p>Cisco Networking Academy</p>
+                        </div>
+                    </article>
+
+                    <article class="cert-card reveal">
+                        <span class="cert-ico">🌐</span>
+                        <div>
+                            <h3>CCNA: Introduction to Networks</h3>
+                            <p>Cisco Networking Academy</p>
+                        </div>
+                    </article>
+
+                    <article class="cert-card reveal">
+                        <span class="cert-ico">🎓</span>
+                        <div>
+                            <h3>NC(V) IT &amp; Computer Science L4</h3>
+                            <p>Central Johannesburg College</p>
+                        </div>
+                    </article>
+
                 </div>
-                <div class="info-item">
-                    <h4>Certifications</h4>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             EXPERIENCE
+             ============================================================ -->
+        <section id="experience" class="section section-alt">
+            <div class="container">
+
+                <header class="section-head reveal">
+                    <span class="eyebrow">Experience</span>
+                    <h2>Work experience</h2>
+                    <p>Practical, hands-on roles where I've applied my technical and administrative skills.</p>
+                </header>
+
+                <div class="timeline">
+
+                    <article class="tl-item reveal">
+                        <span class="tl-date">Jul 2023 — May 2026</span>
+                        <h3>Electronics Technician</h3>
+                        <p class="tl-org">Technical Support &amp; Equipment Maintenance</p>
+                        <ul>
+                            <li>Installed, tested and maintained electronic equipment across client sites</li>
+                            <li>Diagnosed and resolved technical faults, escalating complex issues</li>
+                            <li>Assisted with equipment repairs, servicing and preventative maintenance</li>
+                            <li>Ensured all equipment was operated safely and efficiently</li>
+                            <li>Supported clients with technical issues and clear explanations</li>
+                        </ul>
+                    </article>
+
+                    <article class="tl-item reveal">
+                        <span class="tl-date">Feb 2017 — Oct 2019</span>
+                        <h3>Office Administration Assistant</h3>
+                        <p class="tl-org">Office Administration &amp; Client Support</p>
+                        <ul>
+                            <li>Managed office administration and day-to-day operations</li>
+                            <li>Scheduled appointments and maintained accurate records</li>
+                            <li>Assisted clients and responded to enquiries professionally</li>
+                            <li>Prepared documents, reports and correspondence in Microsoft Office</li>
+                            <li>Supported the team with general administrative duties and data capturing</li>
+                        </ul>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             CONTACT
+             ============================================================ -->
+        <section id="contact" class="section">
+            <div class="container">
+
+                <header class="section-head reveal">
+                    <span class="eyebrow">Contact</span>
+                    <h2>Let's work together</h2>
                     <p>
-                        IT Essentials Cisco Certification, Introduction to IoT Cisco Certification,
-                        Introduction to Cybersecurity Cisco Certification, CCNA: Introduction to
-                        Networks Cisco Certification, NC(V) Information Technology and Computer
-                        Science L4.
+                        I'm actively looking for internships and entry-level opportunities in IT support,
+                        networking and cybersecurity. Feel free to reach out.
                     </p>
+                </header>
+
+                <div class="contact-grid">
+
+                    <div class="contact-list reveal">
+
+                        <a href="mailto:michelline@mabeleng@gmail.com" class="contact-card">
+                            <span class="cc-ico">✉️</span>
+                            <div>
+                                <small>Email</small>
+                                <p>michelline@mabeleng@gmail.com</p>
+                            </div>
+                        </a>
+
+                        <a href="tel:+27730040001" class="contact-card">
+                            <span class="cc-ico">📱</span>
+                            <div>
+                                <small>Phone</small>
+                                <p>073 004 0001</p>
+                            </div>
+                        </a>
+
+                        <a href="https://github.com/" target="_blank" rel="noopener" class="contact-card">
+                            <span class="cc-ico">💻</span>
+                            <div>
+                                <small>GitHub</small>
+                                <p>github.com/michellinemabeleng</p>
+                            </div>
+                        </a>
+
+                        <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="contact-card">
+                            <span class="cc-ico">🔗</span>
+                            <div>
+                                <small>LinkedIn</small>
+                                <p>linkedin.com/in/michelline-mabeleng</p>
+                            </div>
+                        </a>
+
+                    </div>
+
+                    <div class="contact-form reveal">
+                        <h3>Send a message</h3>
+
+                        <form id="contactForm" novalidate>
+                            <div class="field">
+                                <label for="cf-name">Name</label>
+                                <input type="text" id="cf-name" name="name" placeholder="Your name" required>
+                            </div>
+                            <div class="field">
+                                <label for="cf-email">Email</label>
+                                <input type="email" id="cf-email" name="email" placeholder="you@company.co.za" required>
+                            </div>
+                            <div class="field">
+                                <label for="cf-message">Message</label>
+                                <textarea id="cf-message" name="message" placeholder="Tell me about the role or opportunity..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Send Message
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="22" y1="2" x2="11" y2="13"/>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                                </svg>
+                            </button>
+                            <p class="form-note" id="formNote">I usually respond within 24 hours.</p>
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- ============================================================
-             FOOTER / ACTIONS
-             ============================================================ -->
-        <footer class="footer">
-            <button class="btn btn-print" type="button" onclick="window.print()">🖨️ Print CV</button>
-            <button class="btn btn-download" id="downloadBtn" type="button">⬇️ Download PDF</button>
-            <button class="btn btn-toggle-theme" type="button" onclick="toggleTheme()" aria-pressed="false">🌙 Dark Theme</button>
-        </footer>
+    </main>
 
-    </div>
+    <!-- ============================================================
+         FOOTER
+         ============================================================ -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+
+            <div class="footer-brand">
+                <span class="brand-mark">MM</span>
+                <p>© <span id="year"></span> Michelline Mabeleng · All rights reserved.</p>
+            </div>
+
+            <div class="footer-socials">
+                <a href="mailto:michelline@mabeleng@gmail.com" aria-label="Email">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                        <path d="m22 7-10 6L2 7"/>
+                    </svg>
+                </a>
+                <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.7 4.3 18.7 4.6 18.7 4.6c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM2.4 9.5h5.16V21H2.4V9.5zM9.5 9.5h4.94v1.57h.07c.69-1.24 2.37-2.55 4.88-2.55 5.22 0 6.18 3.28 6.18 7.55V21h-5.16v-4.9c0-1.17-.02-2.67-1.67-2.67-1.67 0-1.93 1.27-1.93 2.58V21H9.5V9.5z"/>
+                    </svg>
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button class="to-top" id="toTop" aria-label="Back to top">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5"/>
+            <polyline points="5 12 12 5 19 12"/>
+        </svg>
+    </button>
 
     <script src="script.js"></script>
 </body>
