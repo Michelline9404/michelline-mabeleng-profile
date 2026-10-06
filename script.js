@@ -1,149 +1,284 @@
 /* ============================================================
-   MICHELLINE MABELENG — CV INTERACTIONS
-   Vanilla JavaScript · html2pdf optional (falls back to print)
+   MICHELLINE MABELENG — PORTFOLIO INTERACTIONS
+   Hamburger nav · Scroll reveal · Active links · Typewriter
    ============================================================ */
 
 (function () {
-  'use strict';
+    'use strict';
 
-  /* ----------------------------------------------------------
-     CONSTANTS
-     ---------------------------------------------------------- */
-  const THEME_KEY = 'cvTheme';
-  const PDF_FILENAME = 'Michelline_Mabeleng_CV.pdf';
+    /* ----------------------------------------------------------
+       HELPERS
+       ---------------------------------------------------------- */
+    const $  = (sel, ctx = document) => ctx.querySelector(sel);
+    const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ----------------------------------------------------------
-     THEME CONTROLLER
-     Owns everything related to light/dark mode. Reads and writes
-     `body.dark-theme` and persists the choice in localStorage.
-     ---------------------------------------------------------- */
-  const Theme = {
-    current() {
-      return document.body.classList.contains('dark-theme') ? 'dark' : 'light';
-    },
+    /* ==========================================================
+       1. HEADER — add .scrolled once user scrolls past threshold
+       ========================================================== */
+    const header = $('#siteHeader');
 
-    apply(theme) {
-      document.body.classList.toggle('dark-theme', theme === 'dark');
-      try { localStorage.setItem(THEME_KEY, theme); } catch (e) { /* ignore */ }
-      this.updateButton();
-    },
-
-    toggle() {
-      this.apply(this.current() === 'dark' ? 'light' : 'dark');
-    },
-
-    updateButton() {
-      const btn = document.querySelector('.btn-toggle-theme');
-      if (!btn) return;
-      const isDark = this.current() === 'dark';
-      btn.textContent = isDark ? '☀️ Light Theme' : '🌙 Dark Theme';
-      btn.setAttribute('aria-pressed', String(isDark));
-    },
-
-    init() {
-      let saved = null;
-      try { saved = localStorage.getItem(THEME_KEY); } catch (e) { /* ignore */ }
-      const prefersDark =
-        window.matchMedia &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-      this.apply(saved || (prefersDark ? 'dark' : 'light'));
+    function updateHeader() {
+        if (!header) return;
+        header.classList.toggle('scrolled', window.scrollY > 20);
     }
-  };
 
-  // Expose for the inline `onclick="toggleTheme()"` in the HTML
-  window.toggleTheme = () => Theme.toggle();
+    /* ==========================================================
+       2. HAMBURGER MENU — open, close, backdrop, ESC, focus trap
+       ========================================================== */
+    const hamburger = $('#hamburger');
+    const nav       = $('#primaryNav');
+    const backdrop  = $('#navBackdrop');
+    const body      = document.body;
 
-  /* ----------------------------------------------------------
-     PDF DOWNLOAD
-     Uses html2pdf when available, otherwise falls back to the
-     browser's native print-to-PDF dialog.
-     ---------------------------------------------------------- */
-  function downloadPdf() {
-    const target = document.querySelector('.container');
-    if (!target) return;
+    function openMenu() {
+        nav?.classList.add('is-open');
+        hamburger?.classList.add('is-open');
+        backdrop?.classList.add('is-open');
+        body.classList.add('nav-open');
+        hamburger?.setAttribute('aria-expanded', 'true');
+    }
 
-    if (typeof window.html2pdf !== 'undefined') {
-      const wasDark = document.body.classList.contains('dark-theme');
-      // Force light theme so the PDF always prints on a white background
-      if (wasDark) document.body.classList.remove('dark-theme');
+    function closeMenu() {
+        nav?.classList.remove('is-open');
+        hamburger?.classList.remove('is-open');
+        backdrop?.classList.remove('is-open');
+        body.classList.remove('nav-open');
+        hamburger?.setAttribute('aria-expanded', 'false');
+    }
 
-      const options = {
-        margin: 10,
-        filename: PDF_FILENAME,
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true, backgroundColor: '#ffffff' },
-        jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' },
-        pagebreak: { mode: ['avoid-all', 'css'] }
-      };
+    function toggleMenu() {
+        if (nav?.classList.contains('is-open')) closeMenu();
+        else openMenu();
+    }
 
-      window.html2pdf()
-        .set(options)
-        .from(target)
-        .save()
-        .then(() => { if (wasDark) document.body.classList.add('dark-theme'); })
-        .catch(() => { if (wasDark) document.body.classList.add('dark-theme'); });
+    hamburger?.addEventListener('click', toggleMenu);
+    backdrop?.addEventListener('click', closeMenu);
+
+    // Close when clicking any nav link (mobile)
+    $$('.nav-link, .nav-cta', nav).forEach((link) => {
+        link.addEventListener('click', () => {
+            if (window.matchMedia('(max-width: 900px)').matches) closeMenu();
+        });
+    });
+
+    // ESC closes
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
+    });
+
+    // Close if resized above the mobile breakpoint
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 900) closeMenu();
+    });
+
+    /* ==========================================================
+       3. ACTIVE NAV LINK on scroll + show Back-to-top
+       ========================================================== */
+    const navLinks = $$('.nav-link');
+    const sections = $$('section[id]');
+    const toTop    = $('#toTop');
+
+    function updateActiveSection() {
+        const y = window.scrollY + 140;
+
+        let currentId = sections[0]?.id;
+        for (const s of sections) {
+            if (s.offsetTop <= y) currentId = s.id;
+        }
+
+        navLinks.forEach((link) => {
+            link.classList.toggle(
+                'is-active',
+                link.getAttribute('href') === '#' + currentId
+            );
+        });
+    }
+
+    function updateBackToTop() {
+        toTop?.classList.toggle('is-visible', window.scrollY > 520);
+    }
+
+    /* Throttled scroll handler */
+    let scrollTicking = false;
+    function onScroll() {
+        if (scrollTicking) return;
+        scrollTicking = true;
+        window.requestAnimationFrame(() => {
+            updateHeader();
+            updateActiveSection();
+            updateBackToTop();
+            scrollTicking = false;
+        });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    /* Smooth scroll to top */
+    toTop?.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: prefersReducedMotion ? 'auto' : 'smooth'
+        });
+    });
+
+    /* ==========================================================
+       4. SCROLL REVEAL — fade in .reveal elements
+       ========================================================== */
+    function initReveal() {
+        const items = $$('.reveal');
+
+        if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+            items.forEach((el) => el.classList.add('in'));
+            return;
+        }
+
+        // Stagger elements that sit side-by-side inside the same grid
+        items.forEach((el) => {
+            const siblings = Array.from(el.parentElement?.children || [])
+                .filter((c) => c.classList.contains('reveal'));
+            const index = siblings.indexOf(el);
+            el.style.transitionDelay = Math.min(index, 6) * 70 + 'ms';
+        });
+
+        const io = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in');
+                        io.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.12, rootMargin: '0px 0px -50px 0px' }
+        );
+
+        items.forEach((el) => io.observe(el));
+    }
+
+    /* ==========================================================
+       5. TYPEWRITER — rotates through role titles in the hero
+       ========================================================== */
+    const ROLES = [
+        'ICT Professional',
+        'Electronics Technician',
+        'IT Support & Help Desk',
+        'Data Capturer',
+        'Network Enthusiast',
+        'Cybersecurity Learner'
+    ];
+
+    function initTypewriter() {
+        const el = $('#typewriter');
+        if (!el) return;
+
+        if (prefersReducedMotion) {
+            el.textContent = ROLES[0];
+            return;
+        }
+
+        let roleIdx = 0;
+        let charIdx = 0;
+        let deleting = false;
+
+        function tick() {
+            const word = ROLES[roleIdx];
+            el.textContent = word.slice(0, charIdx);
+
+            if (!deleting) {
+                if (charIdx < word.length) {
+                    charIdx++;
+                    setTimeout(tick, 85);
+                } else {
+                    deleting = true;
+                    setTimeout(tick, 1700);
+                }
+            } else {
+                if (charIdx > 0) {
+                    charIdx--;
+                    setTimeout(tick, 40);
+                } else {
+                    deleting = false;
+                    roleIdx = (roleIdx + 1) % ROLES.length;
+                    setTimeout(tick, 300);
+                }
+            }
+        }
+
+        tick();
+    }
+
+    /* ==========================================================
+       6. CONTACT FORM — mailto fallback
+       Swap for Formspree/Netlify by setting the form's action+method.
+       ========================================================== */
+    function initContactForm() {
+        const form = $('#contactForm');
+        const note = $('#formNote');
+        if (!form) return;
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name    = form.name.value.trim();
+            const email   = form.email.value.trim();
+            const message = form.message.value.trim();
+
+            if (!name || !email || !message) {
+                if (note) {
+                    note.textContent = 'Please complete all fields before sending.';
+                    note.style.color = '#f87171';
+                }
+                return;
+            }
+
+            const subject = encodeURIComponent('Portfolio enquiry from ' + name);
+            const body    = encodeURIComponent(message + '\n\n— ' + name + '\n' + email);
+
+            window.location.href =
+                `mailto:michelline@mabeleng@gmail.com?subject=${subject}&body=${body}`;
+
+            if (note) {
+                note.textContent = 'Opening your email client… Thank you!';
+                note.style.color = '#34d399';
+            }
+            form.reset();
+        });
+    }
+
+    /* ==========================================================
+       7. FOOTER YEAR
+       ========================================================== */
+    const yearEl = $('#year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    /* ==========================================================
+       8. BOOTSTRAP
+       ========================================================== */
+    function boot() {
+        // Initial state
+        updateHeader();
+        updateActiveSection();
+        updateBackToTop();
+
+        // Feature init
+        initReveal();
+        initTypewriter();
+        initContactForm();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', boot);
     } else {
-      alert(
-        'For PDF download, click "OK" then choose "Save as PDF" in the print dialog.'
-      );
-      window.print();
+        boot();
     }
-  }
 
-  /* ----------------------------------------------------------
-     SMOOTH SCROLL for internal anchor links
-     ---------------------------------------------------------- */
-  function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener('click', (e) => {
-        const href = anchor.getAttribute('href');
-        if (!href || href === '#' || href === '#!') return;
-        const target = document.querySelector(href);
-        if (!target) return;
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    });
-  }
-
-  /* ----------------------------------------------------------
-     MICRO-INTERACTION for skill chips
-     ---------------------------------------------------------- */
-  function initSkillChips() {
-    document.querySelectorAll('.skill-item').forEach((item) => {
-      item.addEventListener('click', () => {
-        item.classList.add('is-active');
-        window.setTimeout(() => item.classList.remove('is-active'), 220);
-      });
-    });
-  }
-
-  /* ----------------------------------------------------------
-     PRINT HOOK — make sure every section is visible before printing
-     ---------------------------------------------------------- */
-  window.addEventListener('beforeprint', () => {
-    document.querySelectorAll('.section').forEach((s) => {
-      s.style.opacity = '1';
-      s.style.transform = 'none';
-    });
-  });
-
-  /* ----------------------------------------------------------
-     BOOTSTRAP on DOM ready
-     ---------------------------------------------------------- */
-  document.addEventListener('DOMContentLoaded', () => {
-    Theme.init();
-    initSmoothScroll();
-    initSkillChips();
-
-    const downloadBtn = document.getElementById('downloadBtn');
-    if (downloadBtn) downloadBtn.addEventListener('click', downloadPdf);
-
+    /* ==========================================================
+       9. DEBUG LOG
+       ========================================================== */
     console.log(
-      '%cMichelline Mabeleng · CV loaded',
-      'color:#1CABE2;font-weight:600;',
-      '· theme:', Theme.current()
+        '%cMichelline Mabeleng · Portfolio',
+        'color:#38bdf8;font-weight:700;font-size:13px;',
+        '· loaded · v1.0'
     );
-  });
 })();
