@@ -1,109 +1,250 @@
-/* ============================================================
-   INTERACTIVE FEATURES FOR THE CV PAGE
-   ============================================================ */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Michelline Mabeleng — ICT Professional, Electronics Technician and aspiring Network & Cybersecurity specialist based in Johannesburg, South Africa.">
+    <meta name="author" content="Michelline Mabeleng">
+    <meta name="theme-color" content="#1CABE2">
 
-/**
- * 1. THEME TOGGLE
- * Switches between light and dark mode by toggling
- * the `data-theme` attribute on <html> and saving the
- * preference to localStorage.
- */
-function toggleTheme() {
-  const root = document.documentElement;
-  const current = root.getAttribute('data-theme');
-  const next = current === 'dark' ? 'light' : 'dark';
+    <title>Michelline Mabeleng — Curriculum Vitae</title>
 
-  root.setAttribute('data-theme', next);
-  localStorage.setItem('cv-theme', next);
+    <!-- Open Graph / social sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Michelline Mabeleng — CV">
+    <meta property="og:description" content="ICT Professional · Electronics Technician · Aspiring Network & Cybersecurity Specialist">
 
-  // Update the button label
-  const btn = document.querySelector('.btn-toggle-theme');
-  if (btn) {
-    btn.textContent = next === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
-  }
-}
+    <!-- Favicon (MM monogram) -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231CABE2'/%3E%3Ctext x='16' y='22' font-size='14' font-family='Arial' font-weight='bold' text-anchor='middle' fill='%23ffffff'%3EMM%3C/text%3E%3C/svg%3E">
 
-/**
- * Apply saved theme on page load.
- * Falls back to the user's OS preference if nothing is saved.
- */
-(function applySavedTheme() {
-  const saved = localStorage.getItem('cv-theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const theme = saved || (prefersDark ? 'dark' : 'light');
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-  document.documentElement.setAttribute('data-theme', theme);
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
 
-  // Set button label after DOM is ready
-  window.addEventListener('DOMContentLoaded', () => {
-    const btn = document.querySelector('.btn-toggle-theme');
-    if (btn) {
-      btn.textContent = theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
-    }
-  });
-})();
+    <!-- html2pdf.js — enables true PDF download (optional) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
+</head>
 
-/**
- * 2. DOWNLOAD PDF
- * Uses the browser's print-to-PDF functionality.
- * For a true PDF, this triggers the print dialog where the
- * user can choose "Save as PDF".
- */
-document.addEventListener('DOMContentLoaded', () => {
-  const downloadBtn = document.getElementById('downloadBtn');
-  if (downloadBtn) {
-    downloadBtn.addEventListener('click', () => {
-      // Small delay ensures the button click animation completes
-      setTimeout(() => window.print(), 150);
-    });
-  }
-});
+<body>
+    <div class="container">
 
-/**
- * 3. SCROLL-TRIGGERED ANIMATIONS
- * Adds a subtle fade-up effect to sections as they enter
- * the viewport. Uses IntersectionObserver for performance.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  const sections = document.querySelectorAll('.section');
+        <!-- ============================================================
+             HEADER
+             ============================================================ -->
+        <header class="header">
+            <div class="header-content">
+                <h1>MICHELLINE MABELENG</h1>
+                <div class="titles">
+                    <span class="title">Electronics Technician</span>
+                    <span class="title">Office Administrator</span>
+                    <span class="title">Data Capturer</span>
+                    <span class="title">I.T Technician / Network Engineer</span>
+                </div>
+            </div>
 
-  if (!('IntersectionObserver' in window)) {
-    // Fallback: just show everything
-    sections.forEach(s => (s.style.opacity = '1'));
-    return;
-  }
+            <div class="contact-info">
+                <p>📍 Johannesburg, Auckland Park, 2092</p>
+                <p>📧 <a href="mailto:michelline@mabeleng@gmail.com">michelline@mabeleng@gmail.com</a></p>
+                <p>📱 <a href="tel:+27730040001">073 004 0001</a></p>
+            </div>
+        </header>
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
-  );
+        <hr class="divider">
 
-  sections.forEach((section) => {
-    // Start hidden – CSS animation will handle the reveal
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(18px)';
-    section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(section);
-  });
-});
+        <!-- ============================================================
+             SUMMARY
+             ============================================================ -->
+        <section class="section">
+            <h2 class="section-title">Summary</h2>
+            <p>
+                Motivated and dedicated Information and Communication Technology (ICT) professional
+                with an ICT Certificate from Central Johannesburg College and Cisco Networking Academy
+                certifications in IT Essentials and Introduction to Cybersecurity. Experienced in
+                electronic technician support, data capturing, and office administration. Strong
+                technical troubleshooting, computer literacy, and organizational skills with a
+                commitment to delivering excellent customer service. Seeking an entry-level IT
+                Support, Help Desk, Desktop Support, or Junior Cybersecurity role where I can
+                contribute and continue developing my technical expertise.
+            </p>
+        </section>
 
-/**
- * 4. PRINT SHORTCUT
- * Allows pressing Ctrl+P / Cmd+P naturally (no override needed),
- * but we ensure the print styles are applied correctly.
- */
-window.addEventListener('beforeprint', () => {
-  // Ensure all sections are visible before printing
-  document.querySelectorAll('.section').forEach((s) => {
-    s.style.opacity = '1';
-    s.style.transform = 'none';
-  });
-});
+        <!-- ============================================================
+             PROFESSIONAL EXPERIENCE
+             ============================================================ -->
+        <section class="section">
+            <h2 class="section-title">Professional Experience</h2>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3>Electronics Technician</h3>
+                    <span class="date">July 2023 – May 2026</span>
+                </div>
+                <ul>
+                    <li>Installed, tested and maintained electronic equipment</li>
+                    <li>Diagnosed and resolved technical faults</li>
+                    <li>Assisted with equipment repairs and maintenance</li>
+                    <li>Ensured equipment operated safely and efficiently</li>
+                    <li>Supported clients with technical issues and troubleshooting</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3>Office Administration Assistant</h3>
+                    <span class="date">February 2017 – October 2019</span>
+                </div>
+                <ul>
+                    <li>Managed office administration and daily operations</li>
+                    <li>Scheduled appointments and maintained office records</li>
+                    <li>Assisted clients and responded to enquiries professionally</li>
+                    <li>Prepared documents, reports and correspondence</li>
+                    <li>Supported the team with general administrative duties</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             TECHNICAL SKILLS
+             ============================================================ -->
+        <section class="section">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">Computer hardware installation, maintenance and troubleshooting</div>
+                <div class="skill-item">Windows operating systems</div>
+                <div class="skill-item">Basic networking concepts</div>
+                <div class="skill-item">Cybersecurity fundamentals</div>
+                <div class="skill-item">Microsoft Office (Word, Excel, Outlook and PowerPoint)</div>
+                <div class="skill-item">Data capturing and record management</div>
+                <div class="skill-item">Technical support and problem-solving</div>
+                <div class="skill-item">Customer service</div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             PROJECTS
+             ============================================================ -->
+        <section class="section">
+            <h2 class="section-title">Projects</h2>
+
+            <div class="project-item">
+                <h3>Computer Programming ISAT</h3>
+                <p>
+                    Developed a web-based application to sell goods &amp; services.
+                    Utilized HTML, CSS and JavaScript.
+                </p>
+            </div>
+
+            <div class="project-item">
+                <h3>Principles of Computer Programming ISAT</h3>
+                <p>
+                    Designed &amp; implemented a database system to keep logs of a company's
+                    transactions. Utilized SQL &amp; database design principles.
+                </p>
+            </div>
+
+            <div class="project-item">
+                <h3>Data Communication &amp; Networking ISAT</h3>
+                <p>
+                    Created a small LAN network. Utilized tools such as crimper, RJ45 connectors
+                    and Cat6 cables to construct Ethernet cables.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             CORE SKILLS & STRENGTHS
+             ============================================================ -->
+        <section class="section">
+            <h2 class="section-title">Core Skills &amp; Strengths</h2>
+            <div class="strengths-grid">
+                <div class="strength-column">
+                    <ul>
+                        <li>Technical troubleshooting</li>
+                        <li>Communication</li>
+                        <li>Continuous learner</li>
+                        <li>Electrical component identification</li>
+                    </ul>
+                </div>
+                <div class="strength-column">
+                    <ul>
+                        <li>Problem-solving</li>
+                        <li>Circuit analysis</li>
+                        <li>Electrical safety</li>
+                        <li>Soldering and desoldering skills</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             EDUCATION
+             ============================================================ -->
+        <section class="section">
+            <h2 class="section-title">Education</h2>
+
+            <div class="education-item">
+                <div class="education-header">
+                    <h3>Central Johannesburg College</h3>
+                    <span class="date">January 2020 – December 2022</span>
+                </div>
+                <p><strong>Information Technology &amp; Computer Sciences</strong></p>
+                <ul>
+                    <li>Relevant coursework in ICT field</li>
+                    <li>System Analysis &amp; Design for project management</li>
+                    <li>Data Communication &amp; Networking</li>
+                </ul>
+            </div>
+
+            <div class="education-item">
+                <div class="education-header">
+                    <h3>Cisco Network Academy</h3>
+                    <span class="date">January 2022 – December 2022</span>
+                </div>
+                <ul>
+                    <li>Cisco Certified Network Academy (CCNA)</li>
+                    <li>IT Essentials, Internet of Things (IoT)</li>
+                    <li>Cyber Security</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             ADDITIONAL INFORMATION
+             ============================================================ -->
+        <section class="section">
+            <h2 class="section-title">Additional Information</h2>
+            <div class="additional-info">
+                <div class="info-item">
+                    <h4>Languages</h4>
+                    <p>English, isiZulu, Setswana</p>
+                </div>
+                <div class="info-item">
+                    <h4>Certifications</h4>
+                    <p>
+                        IT Essentials Cisco Certification, Introduction to IoT Cisco Certification,
+                        Introduction to Cybersecurity Cisco Certification, CCNA: Introduction to
+                        Networks Cisco Certification, NC(V) Information Technology and Computer
+                        Science L4.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             FOOTER / ACTIONS
+             ============================================================ -->
+        <footer class="footer">
+            <button class="btn btn-print" type="button" onclick="window.print()">🖨️ Print CV</button>
+            <button class="btn btn-download" id="downloadBtn" type="button">⬇️ Download PDF</button>
+            <button class="btn btn-toggle-theme" type="button" onclick="toggleTheme()" aria-pressed="false">🌙 Dark Theme</button>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
