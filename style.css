@@ -1,0 +1,409 @@
+:root {
+    --primary-color: #1a1a1a;
+    --secondary-color: #333333;
+    --text-color: #222222;
+    --accent-color: #0066cc;
+    --light-bg: #ffffff;
+    --border-color: #cccccc;
+}
+
+body.dark-theme {
+    --primary-color: #1a1a1a;
+    --secondary-color: #2d2d2d;
+    --text-color: #e0e0e0;
+    --accent-color: #66b3ff;
+    --light-bg: #1e1e1e;
+    --border-color: #444444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-bg);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: var(--light-bg);
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.header-content h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.titles {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 0.9em;
+    color: var(--secondary-color);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.title {
+    display: block;
+}
+
+.contact-info {
+    text-align: right;
+    font-size: 0.95em;
+}
+
+.contact-info p {
+    margin: 5px 0;
+    color: var(--text-color);
+}
+
+.contact-info a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* Divider */
+.divider {
+    border: none;
+    border-top: 2px solid var(--primary-color);
+    margin: 20px 0;
+}
+
+/* Section Styles */
+.section {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.section p {
+    color: var(--text-color);
+    margin-bottom: 15px;
+    text-align: justify;
+    line-height: 1.8;
+}
+
+/* Experience Styles */
+.experience-item {
+    margin-bottom: 20px;
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.experience-header h3 {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.date {
+    font-size: 0.9em;
+    color: var(--secondary-color);
+    font-style: italic;
+}
+
+.experience-item ul {
+    margin-left: 20px;
+    color: var(--text-color);
+}
+
+.experience-item li {
+    margin-bottom: 8px;
+    list-style-type: disc;
+}
+
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.skill-item {
+    background-color: var(--secondary-color);
+    color: var(--light-bg);
+    padding: 12px 15px;
+    border-radius: 5px;
+    font-size: 0.95em;
+    line-height: 1.4;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skill-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme .skill-item {
+    background-color: #444444;
+    color: var(--text-color);
+}
+
+/* Project Styles */
+.project-item {
+    margin-bottom: 18px;
+    padding-left: 15px;
+    border-left: 4px solid var(--accent-color);
+}
+
+.project-item h3 {
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+.project-item p {
+    color: var(--text-color);
+    margin: 0;
+    font-size: 0.95em;
+}
+
+/* Strengths Grid */
+.strengths-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.strength-column ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    color: var(--text-color);
+}
+
+.strength-column li {
+    margin-bottom: 10px;
+}
+
+/* Education Styles */
+.education-item {
+    margin-bottom: 20px;
+    background-color: var(--light-bg);
+    padding-bottom: 10px;
+}
+
+.education-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.education-header h3 {
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.education-item p {
+    color: var(--text-color);
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.education-item ul {
+    margin-left: 20px;
+    color: var(--text-color);
+}
+
+.education-item li {
+    margin-bottom: 8px;
+    list-style-type: disc;
+}
+
+/* Additional Information */
+.additional-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.info-item h4 {
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+.info-item p {
+    color: var(--text-color);
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+/* Footer with Buttons */
+.footer {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    border-top: 2px solid var(--border-color);
+}
+
+.btn {
+    padding: 12px 24px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.btn-print {
+    background-color: var(--primary-color);
+    color: var(--light-bg);
+}
+
+.btn-print:hover {
+    background-color: var(--secondary-color);
+    transform: scale(1.05);
+}
+
+.btn-download {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.btn-download:hover {
+    background-color: #0052a3;
+    transform: scale(1.05);
+}
+
+.btn-toggle-theme {
+    background-color: #666666;
+    color: white;
+}
+
+.btn-toggle-theme:hover {
+    background-color: #555555;
+    transform: scale(1.05);
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background-color: white;
+    }
+
+    .container {
+        padding: 0;
+        background-color: white;
+    }
+
+    .footer {
+        display: none;
+    }
+
+    .skill-item {
+        break-inside: avoid;
+    }
+
+    .experience-item,
+    .project-item,
+    .education-item {
+        page-break-inside: avoid;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+    }
+
+    .contact-info {
+        text-align: left;
+    }
+
+    .header-content h1 {
+        font-size: 2em;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .strengths-grid,
+    .additional-info {
+        grid-template-columns: 1fr;
+    }
+
+    .experience-header,
+    .education-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px 10px;
+    }
+
+    .header-content h1 {
+        font-size: 1.5em;
+    }
+
+    .section-title {
+        font-size: 1.1em;
+    }
+
+    .contact-info {
+        font-size: 0.85em;
+    }
+}
